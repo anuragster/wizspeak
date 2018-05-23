@@ -6,30 +6,6 @@
 	<import resource="classpath:cache.xml"/>
 	<import resource="classpath:database.xml"/>
 
-	<bean id="keyValueCache"
-		class="com.tecsolvent.wizspeak.notification.upstream.storage.impl.KeyValueCache"
-		init-method="initIt">
-	<!--	<property name="redisHost" value="139.162.33.112" /> -->
-		<property name="redisHost" value="127.0.0.1" />
-		<property name="redisPort" value="6379" />
-	</bean>
-	
-	<!-- <bean id="wizspeakUpstreamHandler"
-		class="com.tecsolvent.wizspeak.notification.upstream.handler.impl.LikeWizspeakUpstreamHandler">
-		<property name="notificationService" ref="likeNotificationService" />
-		<property name="keyValueCache" ref="keyValueCache" />
-	</bean> -->
-	
-	<bean id="likeNotificationService"
-		class="com.tecsolvent.wizspeak.notification.services.LikeNotificationServiceImpl">
-		<property name="notificationDAO" ref="notificationDAO" />
-	</bean>
-	
-	<bean id="notificationDAO"
-		class="com.tecsolvent.wizspeak.notification.dao.NotificationDAOImpl">
-		<property name="keyValueCache" ref="keyValueCache" />
-	</bean>
-	
 	<bean class="com.tecsolvent.wizspeak.service.TestService" id="testService">
 		<property name="testDao" ref="testDao"/>
 		<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache"/>
