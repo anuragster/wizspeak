@@ -37,7 +37,7 @@ import com.tecsolvent.wizspeak.model.SubCategory;
 import com.tecsolvent.wizspeak.model.User;
 import com.tecsolvent.wizspeak.model.UserEducation;
 import com.tecsolvent.wizspeak.notification.dao.Notification;
-import com.tecsolvent.wizspeak.notification.dao.NotificationResponse;
+import com.tecsolvent.wizspeak.notification.main.test.NotificationResponse;
 import com.tecsolvent.wizspeak.notification.services.ViewNotificationService;
 
 import com.tecsolvent.wizspeak.service.AmbitionService;
