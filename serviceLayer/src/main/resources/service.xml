@@ -30,11 +30,6 @@
 		<property name="keyValueCache" ref="keyValueCache" />
 	</bean>
 	
-	<bean id="viewNotificationService"
-		class="com.tecsolvent.wizspeak.notification.services.ViewNotificationServiceImpl">
-		<property name="notificationDAO" ref="notificationDAO" />
-	</bean>
-
 	<bean class="com.tecsolvent.wizspeak.service.TestService" id="testService">
 		<property name="testDao" ref="testDao"/>
 		<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache"/>

@@ -38,7 +38,6 @@ import com.tecsolvent.wizspeak.model.User;
 import com.tecsolvent.wizspeak.model.UserEducation;
 import com.tecsolvent.wizspeak.notification.dao.Notification;
 import com.tecsolvent.wizspeak.notification.main.test.NotificationResponse;
-import com.tecsolvent.wizspeak.notification.services.ViewNotificationService;
 
 import com.tecsolvent.wizspeak.service.AmbitionService;
 import com.tecsolvent.wizspeak.service.GroupService;
@@ -59,9 +58,6 @@ public class AmbitionController extends HttpServlet{
 
 	@Resource(name = "groupService")
 	GroupService groupService;
-
-	@Resource(name = "viewNotificationService")
-	ViewNotificationService vns;
 
 	@RequestMapping(value = "/ambitionPage/{userId}", method = RequestMethod.GET)
 	public
@@ -103,63 +99,6 @@ public class AmbitionController extends HttpServlet{
 		return JsonConvert.ObjJson(g);
 
 
-	}
-
-	@RequestMapping(value = "/notifications/{notification_id}", method = RequestMethod.PUT)
-	public
-	@ResponseBody
-	String updateNotification(@PathVariable String notification_id){
-		try{
-			vns.updateStatus(notification_id, Notification.Status.READ);
-		}catch(Exception e){
-			System.err.println("Exception - " + e);
-		}
-		return "";
-	}
-
-	@RequestMapping(value = "/notifications/{user_id}", method = RequestMethod.GET)
-	public
-	@ResponseBody
-	String getNotifications(@PathVariable long user_id) throws Exception
-	{
-		List<Notification> notifications = vns.get(user_id);
-		
-		Map<String, Object> result = new HashMap<String, Object>();
-		
-		List<Notification> ambitions = new ArrayList<Notification>();
-		List<Notification> hobbies = new ArrayList<Notification>();
-		List<Notification> team = new ArrayList<Notification>();
-		
-		if(notifications != null){
-			for (Notification notification : notifications) {
-				switch(notification.getCategory()) {
-				case AMBITION:
-					ambitions.add(notification);
-					break;
-				case HOBBIES:
-					hobbies.add(notification);
-					break;
-				case TEAMS:
-					team.add(notification);
-					break;
-				default:
-					break;
-				
-				}
-			}
-		}
-		
-		NotificationResponse ambitionResponse = new NotificationResponse(ambitions.size(), ambitions);
-		NotificationResponse hobbiesResponse = new NotificationResponse(hobbies.size(), hobbies);
-		NotificationResponse teamResponse = new NotificationResponse(team.size(), team);
-		
-		result.put("count", notifications.size());
-		result.put("Ambition", ambitionResponse);
-		result.put("Hobbies", hobbiesResponse);
-		result.put("Team", teamResponse);
-		
-		
-		return JsonConvert.ObjJson(result);
 	}
 
 	@RequestMapping(value = "/getUserFriends/{user_id}", method = RequestMethod.GET)
