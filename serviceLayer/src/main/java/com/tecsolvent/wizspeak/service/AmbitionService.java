@@ -5,8 +5,6 @@ import com.tecsolvent.wizspeak.*;
 import com.tecsolvent.wizspeak.cache.GuavaAndCouchbaseCache;
 import com.tecsolvent.wizspeak.model.*;
 import com.tecsolvent.wizspeak.notification.dao.Notification.Type;
-import com.tecsolvent.wizspeak.notification.upstream.handler.api.IWizspeakUpstreamHandler;
-import com.tecsolvent.wizspeak.notification.upstream.handler.impl.WizspeakUpstreamHandler;
 import com.tecsolvent.wizspeak.utility.DateUtil;
 import com.tecsolvent.wizspeak.utility.StringUtil;
 
