@@ -814,6 +814,10 @@ logger.info("feching as single post for user details");
 
 		Map<String,Object> ma = new HashMap<>();
 		ma = commentDao.addComment(comment);
+		Map<String, String> msgContainer = new HashMap<String, String>();
+		msgContainer.put("name", "Anurag");
+		WizNotification.createNotification(5l, com.tecsolvent.wizspeak.notification.dao.Notification.Category.AMBITION, 4l, 629l, Type.COMMENT, msgContainer, true);
+
 		return ma;
 
 	}
